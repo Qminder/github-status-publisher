@@ -18,6 +18,4 @@ jobs:
         run: go build
         env:
           GO111MODULE: "on"
-          GOARCH: "amd64"
-          GOOS: "linux"
           CGO_ENABLED: "0"
