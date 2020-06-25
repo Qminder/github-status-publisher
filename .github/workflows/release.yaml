@@ -1,6 +1,7 @@
 on: release
 name: Build Release
 jobs:
+
   release-linux-386:
     name: release linux/386
     runs-on: ubuntu-latest
@@ -10,9 +11,11 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GO111MODULE: "on"
           GOARCH: "386"
-          GOOS: linux
+          GOOS: "linux"
           EXTRA_FILES: "LICENSE"
+
   release-linux-amd64:
     name: release linux/amd64
     runs-on: ubuntu-latest
@@ -22,9 +25,11 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOARCH: amd64
-          GOOS: linux
+          GO111MODULE: "on"
+          GOARCH: "amd64"
+          GOOS: "linux"
           EXTRA_FILES: "LICENSE"
+
   release-linux-arm:
     name: release linux/386
     runs-on: ubuntu-latest
@@ -34,9 +39,11 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GO111MODULE: "on"
           GOARCH: "arm"
-          GOOS: linux
+          GOOS: "linux"
           EXTRA_FILES: "LICENSE"
+
   release-linux-arm64:
     name: release linux/amd64
     runs-on: ubuntu-latest
@@ -46,9 +53,11 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOARCH: arm64
-          GOOS: linux
+          GO111MODULE: "on"
+          GOARCH: "arm64"
+          GOOS: "linux"
           EXTRA_FILES: "LICENSE"
+
   release-darwin-amd64:
     name: release darwin/amd64
     runs-on: ubuntu-latest
@@ -58,9 +67,11 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOARCH: amd64
-          GOOS: darwin
+          GO111MODULE: "on"
+          GOARCH: "amd64"
+          GOOS: "darwin"
           EXTRA_FILES: "LICENSE"
+
   release-windows-386:
     name: release windows/386
     runs-on: ubuntu-latest
@@ -70,9 +81,11 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GO111MODULE: "on"
           GOARCH: "386"
-          GOOS: windows
+          GOOS: "windows"
           EXTRA_FILES: "LICENSE"
+
   release-windows-amd64:
     name: release windows/amd64
     runs-on: ubuntu-latest
@@ -82,6 +95,7 @@ jobs:
         uses: ngs/go-release.action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOARCH: amd64
-          GOOS: windows
+          GO111MODULE: "on"
+          GOARCH: "amd64"
+          GOOS: "windows"
           EXTRA_FILES: "LICENSE"
