@@ -1,4 +1,6 @@
-on: release
+on:
+  release:
+    types: [published]
 name: Build Release
 jobs:
 
@@ -21,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: install gcc
+        run: apk add --no-cache gcc musl-dev
       - name: compile and release
         uses: ngs/go-release.action@v1.0.1
         env:
@@ -45,7 +49,7 @@ jobs:
           EXTRA_FILES: "LICENSE"
 
   release-linux-arm64:
-    name: release linux/amd64
+    name: release linux/arm64
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
