@@ -3,8 +3,9 @@ on:
     types: [published]
 name: Publish Release
 jobs:
-  steps:
-    release-linux-amd64:
+  release-linux-amd64:
+    runs-on: ubuntu-latest
+    steps:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
@@ -23,5 +24,5 @@ jobs:
         uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            args: "github-status-publisher-*"
+        with:
+          args: "github-status-publisher-*"
