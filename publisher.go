@@ -13,6 +13,11 @@ import (
 
 func main() {
 
+	if len(os.Args) == 2 && os.Args[1] == "--version" {
+		fmt.Println("Version 0.1.1")
+		os.Exit(0)
+	}
+
 	if len(os.Args) < 4 {
 		fmt.Println("Usage: context state description [url]")
 		os.Exit(1)
