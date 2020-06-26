@@ -14,7 +14,7 @@ import (
 func main() {
 
 	if len(os.Args) == 2 && os.Args[1] == "--version" {
-		fmt.Println("Version 0.1.1")
+		fmt.Println("Version 0.1.3")
 		os.Exit(0)
 	}
 
@@ -23,7 +23,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	owner, repo := getOwnerAndRepo()
+	owner, repo := getOwnerAndRepo(getEnv("BUILDKITE_REPO"))
 	ref := getEnv("BUILDKITE_COMMIT")
 
 	stateContext := os.Args[1]
@@ -58,9 +58,8 @@ func createGithubClient() *github.Client {
 	return github.NewClient(&http.Client{Transport: itr})
 }
 
-func getOwnerAndRepo() (string, string) {
-	pattern := regexp.MustCompile(`([a-zA-Z]+)/([a-z]+)`)
-	url := getEnv("BUILDKITE_REPO")
+func getOwnerAndRepo(url string) (string, string) {
+	pattern := regexp.MustCompile(`([a-zA-Z]+)/([a-z\-]+)`)
 	matches := pattern.FindStringSubmatch(url)
 	if len(matches) != 3 {
 		fmt.Println("Value of BUILDKITE_REPO is unexpected")
